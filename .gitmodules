@@ -19,3 +19,9 @@
 [submodule "vim/vim.symlink/bundle/ctrlp.vim"]
 	path = vim/vim.symlink/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim
+[submodule "vim/vim.symlink/bundle/supertab"]
+	path = vim/vim.symlink/bundle/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "vim/vim.symlink/bundle/ack.vim"]
+	path = vim/vim.symlink/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
