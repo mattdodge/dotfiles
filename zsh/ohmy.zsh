@@ -49,7 +49,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/Users/matt/.rvm/gems/ruby-2.1.3/bin:/Users/matt/.rvm/gems/ruby-2.1.3@global/bin:/Users/matt/.rvm/rubies/ruby-2.1.3/bin:/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/bin:/opt/local/sbin:/Users/matt/code/nio-scripts:/Users/matt/.nvm/v0.10.33/bin:/Users/matt/code/go_appengine:/usr/local/heroku/bin:/Users/matt/android/android-sdk/sdk/tools:/Users/matt/android/android-sdk/sdk/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/matt/.rvm/bin"
+# export PATH="/Users/matt/.rvm/gems/ruby-2.1.3/bin:/Users/matt/.rvm/gems/ruby-2.1.3@global/bin:/Users/matt/.rvm/rubies/ruby-2.1.3/bin:/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/bin:/opt/local/sbin:/Users/matt/code/nio-scripts:/Users/matt/.nvm/v0.10.33/bin:/Users/matt/code/go_appengine:/usr/local/heroku/bin:/Users/matt/android/android-sdk/sdk/tools:/Users/matt/android/android-sdk/sdk/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/matt/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
