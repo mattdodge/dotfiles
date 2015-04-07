@@ -13,6 +13,9 @@ alias la="ls -Gla" # list all, includes dot files
 alias ll="ls -Gl" # long list, excludes dot files
 
 alias pgrep="ps -ax | grep -i"
+grepr() {
+	grep -r -I $1 ./* --color=auto "${@:2}"
+}
 
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="sudo osascript -e 'set volume 10'"
@@ -22,7 +25,8 @@ alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 
 # Get readable list of network IPs
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias flush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder" # Flush DNS cache
+alias myipc="myip | pbcopy"
+alias flush="sudo discoveryutil mdnsflushcache" # Flush DNS cache
 
 alias gzip="gzip -9n" # set strongest compression level as ‘default’ for gzip
 alias ping="ping -c 5" # ping 5 times ‘by default’
