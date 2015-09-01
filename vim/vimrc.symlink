@@ -4,6 +4,7 @@ call pathogen#helptags()
 
 set t_Co=256
 colorscheme desert256
+set guifont=Hack
 
 set nocompatible
 set foldmethod=indent
