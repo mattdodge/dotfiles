@@ -23,11 +23,12 @@ filetype plugin indent on
 syntax on
 
 " Remap K to D for python-mode plugin
-let g:pymode_doc_bind = 'D'
+let g:pymode_doc = 0
 let g:pymode_python = 'python3'
 let g:pymode_lint_ignore = ["W601"] " Ignore pesky has_key warnings
 
 au FileType python set omnifunc=pythoncomplete#Complete
+au FileType python set completeopt-=preview
 let g:SuperTabDefaultCompletionType = "context"
 
 let mapleader = ","
