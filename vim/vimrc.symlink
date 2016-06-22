@@ -58,7 +58,8 @@ map <leader>N :set invnumber<CR>
 let g:pymode_rope = 1
 let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_rope_goto_definition_bind = '<leader>j'
-"" let g:pymode_rope_lookup_project = 1
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_autoimport = 1
 map <leader>i :PymodeRopeAutoImport<CR>
 let g:pymode_run_bind = '<leader>e'     " 'execute' instead of 'run'
 let g:pymode_rope_rename_bind = '<leader>r'
