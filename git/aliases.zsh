@@ -10,6 +10,7 @@ fi
 alias g='git'
 alias ga='git add'
 alias gl='git pull --prune'
+alias gmt='git mergetool'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gp='git push origin HEAD'
 gd() { git diff --color $* | diff-so-fancy | less --tabs=1,5 -R }
