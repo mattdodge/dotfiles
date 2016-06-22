@@ -29,7 +29,10 @@ setopt HIST_REDUCE_BLANKS
 
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]
-setopt complete_aliases
+# keep this disabled to have autocompletion of aliased things. For example, to have branch
+# completion when you type "gco mast<tab>"
+# http://stackoverflow.com/questions/14307086/tab-completion-for-aliased-sub-commands-in-zsh-alias-gco-git-checkout
+# setopt complete_aliases
 
 zle -N newtab
 
