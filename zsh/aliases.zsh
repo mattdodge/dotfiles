@@ -2,8 +2,6 @@ alias reload!='. ~/.zshrc'
 alias ..="cd .."
 alias ...="cd .. ; cd .."
 
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-
 cdl() {
 	cd $1
 	ls -l
