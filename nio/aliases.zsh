@@ -1,7 +1,4 @@
-test_block() {
-	coverage run `which nose2` $1.tests
-	coverage report --include="$1/*" -m
-}
+alias test_block="py.test --cov=. --cov-report term-missing -s tests"
 
 unused_blocks() {
 for blockcfg in etc/blocks/*; do 
