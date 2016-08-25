@@ -83,6 +83,9 @@ autocmd BufEnter *.py let &colorcolumn=join(range(80,999),",")
 autocmd BufEnter *.py highlight ColorColumn ctermbg=236 guibg=#3A3A3A
 let g:pymode_lint_write = 0
 
+" JavaScript specific stuff
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+
 " remap the join command to ,w (think "wrap")
 noremap <leader>w J
 
@@ -118,9 +121,20 @@ au Syntax * RainbowParenthesesLoadBraces
 
 au FileType yaml set sw=2
 
+" Syntastic (these are the recommended starter settings)
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
 set noswapfile
 set nobackup
 set nowritebackup
 set hidden
+set autoread " Automatically reload files from disk if they are changed
 
 nmap <Space> <Plug>(easymotion-s)
