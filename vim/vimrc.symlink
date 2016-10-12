@@ -2,6 +2,9 @@ filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
+""""""""""""""""""""
+" GENERAL SETTINGS "
+""""""""""""""""""""
 set t_Co=256
 colorscheme desert256
 set guifont=Hack
@@ -9,6 +12,44 @@ set guifont=Hack
 set nocompatible
 set foldmethod=indent
 set foldlevel=99
+
+set completeopt=menuone,longest,preview
+set tabstop=4 shiftwidth=4 softtabstop=4
+
+" Our leader will be the comma key
+let mapleader = ","
+
+" Escape with jk 
+inoremap jk <Esc>
+
+" double semi-colon starts bash command
+nnoremap ;; :!
+
+" search stuff
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>
+
+" toggle line numbers
+map <leader>N :set invnumber<CR>
+
+set noswapfile
+set nobackup
+set nowritebackup
+set hidden
+set autoread " Automatically reload files from disk if they are changed
+
+filetype plugin indent on
+syntax on
+
+
+
+"""""""""""""""""""""""""
+" MOVEMENT / NAVIGATION "
+"""""""""""""""""""""""""
 
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -19,25 +60,6 @@ noremap ]v :vertical resize +5<cr>
 noremap [h :resize -5<cr>
 noremap ]h :resize +5<cr>
 
-filetype plugin indent on
-syntax on
-
-" Remap K to D for python-mode plugin
-let g:pymode_doc = 0
-let g:pymode_python = 'python3'
-let g:pymode_lint_ignore = ["W601"] " Ignore pesky has_key warnings
-
-au FileType python set omnifunc=pythoncomplete#Complete
-au FileType python set completeopt-=preview
-let g:SuperTabDefaultCompletionType = "context"
-
-let mapleader = ","
-
-set completeopt=menuone,longest,preview
-set tabstop=4 shiftwidth=4 softtabstop=4
-
-inoremap jk <Esc>
-
 " close a buffer without closing split/window
 map <leader>d :bp<bar>bw #<CR>
 
@@ -45,15 +67,82 @@ map <leader>d :bp<bar>bw #<CR>
 map <leader>v :vsp<bar>bp<CR><c-w>l
 map <leader>s :sp<bar>bp<CR><c-w>j
 
+" Navigate through buffers with the tab key
 map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
 
+" remap the join command to ,w (think 'wrap')
+noremap <leader>w J
+
+" make j/k move correctly on wrapped lines
+map j gj
+map k gk
+
+noremap J 15j
+noremap K 15k
+noremap L $
+noremap H ^
+nnoremap ; :
+
+
+
+
+
+"""""""""""""""""""""""""
+" PLUGIN SPECIFIC STUFF "
+"""""""""""""""""""""""""
+" ack
+nmap <leader>a <Esc>:Ack!
+
+" ctrlp
+let g:ctrlp_map = '<leader>t'     " I used to use command-t...
+let g:ctrlp_custom_ignore = '\v\.(pyc|git)' " Ignore the crap
+let g:ctrlp_working_path_mode = 'a'
+
+" nerdtree
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore=['__pycache__', '\~$']
 
-" toggle line numbers
-map <leader>N :set invnumber<CR>
+" vim-fugitive
+autocmd BufReadPost fugitive://* set bufhidden=delete " don't show in buffer
 
+" rainbow_parentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
+" vim-easymotion
+nmap <Space> <Plug>(easymotion-s)
+
+
+
+
+"""""""""""""""""""""""""
+" SETTINGS BY FILE TYPE "
+"""""""""""""""""""""""""
+
+" Python specific stuff 
+autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql 
+autocmd BufEnter *.py let &colorcolumn=join(range(80,999),",")
+autocmd BufEnter *.py highlight ColorColumn ctermbg=236 guibg=#3A3A3A
+let g:pymode_lint_write = 0
+let g:pymode_doc = 0
+let g:pymode_python = 'python3'
+let g:pymode_lint_ignore = ["W601"] " Ignore pesky has_key warnings
+au FileType python set omnifunc=pythoncomplete#Complete
+au FileType python set completeopt-=preview
+let g:SuperTabDefaultCompletionType = "context"
 " Python-mode stuff
 let g:pymode_rope = 1
 let g:pymode_rope_goto_definition_cmd = 'e'
@@ -68,73 +157,12 @@ let g:pymode_paths = ['/Users/matt/code/nio/src', '/Users/matt/code/nioext/src',
 " Automatically fix lint errors
 map <leader>f :PymodeLintAuto<CR>:PymodeLint<CR>
 
-map <leader>o :TagbarToggle<CR>
-
-nmap <leader>a <Esc>:Ack!
-
-" CtrlP Stuff
-let g:ctrlp_map = '<leader>t'     " I used to use command-t...
-let g:ctrlp_custom_ignore = '\v\.(pyc|git)' " Ignore the crap
-let g:ctrlp_working_path_mode = 'a'
-
-" Python specific stuff 
-autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql 
-autocmd BufEnter *.py let &colorcolumn=join(range(80,999),",")
-autocmd BufEnter *.py highlight ColorColumn ctermbg=236 guibg=#3A3A3A
-let g:pymode_lint_write = 0
-
 " JavaScript specific stuff
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 
-" remap the join command to ,w (think "wrap")
-noremap <leader>w J
+" CSS specific stuff
+autocmd BufEnter *.scss setlocal ts=2 sts=2 sw=2 expandtab
+autocmd BufEnter *.css setlocal ts=2 sts=2 sw=2 expandtab
 
-" make j/k move correctly on wrapped lines
-map j gj
-map k gk
-
-noremap J 15j
-noremap K 15k
-noremap L $
-noremap H ^
-nnoremap ; :
-
-" double semi-colon starts bash command
-nnoremap ;; :!
-
-"search stuff
-set ignorecase
-set smartcase
-set incsearch
-set showmatch
-set hlsearch
-nnoremap <leader><space> :noh<cr>
-
-" Fugitive settings
-autocmd BufReadPost fugitive://* set bufhidden=delete " don't show in buffer
-
-" rainbow parentheses always on
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
+" YAML Files
 au FileType yaml set sw=2
-
-" Syntastic (these are the recommended starter settings)
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-
-set noswapfile
-set nobackup
-set nowritebackup
-set hidden
-set autoread " Automatically reload files from disk if they are changed
-
-nmap <Space> <Plug>(easymotion-s)
