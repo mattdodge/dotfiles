@@ -32,6 +32,7 @@ set incsearch
 set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
+vnoremap // y/<C-R>"<CR>
 
 " toggle line numbers
 map <leader>N :set invnumber<CR>
