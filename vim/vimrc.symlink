@@ -62,7 +62,7 @@ noremap [h :resize -5<cr>
 noremap ]h :resize +5<cr>
 
 " close a buffer without closing split/window
-map <leader>d :bp<bar>bw #<CR>
+map <leader>d :bp<bar>bw! #<CR>
 
 " move buffer to new split and set old split to prev buffer
 map <leader>v :vsp<bar>bp<CR><c-w>l
