@@ -78,6 +78,8 @@ noremap <leader>w J
 " make j/k move correctly on wrapped lines
 map j gj
 map k gk
+" Wrap around lines at the end of lines
+set whichwrap=b,s,h,l,<,>,[,] 
 
 noremap J 15j
 noremap K 15k
