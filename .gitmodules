@@ -37,3 +37,6 @@
 [submodule "vim/vim.symlink/bundle/syntastic"]
 	path = vim/vim.symlink/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/vim.symlink/bundle/vim-tmux-focus-events"]
+	path = vim/vim.symlink/bundle/vim-tmux-focus-events
+	url = git://github.com/tmux-plugins/vim-tmux-focus-events.git

@@ -4,3 +4,22 @@ set -sg escape-time 0
 # Automatically set window title
 set-window-option -g automatic-rename on
 set-option -g set-titles on
+
+# Allow pbcopy to work inside tmux
+set -g default-shell $SHELL 
+set -g default-command "reattach-to-user-namespace -l ${SHELL}"
+
+# Focus events so vim can read events like autoread
+set -g focus-events on
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Automatically restore old tmux sessions
+set -g @continuum-restore 'on'
+
+# # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
