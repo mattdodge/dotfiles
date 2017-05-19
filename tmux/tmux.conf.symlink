@@ -12,12 +12,32 @@ bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
 bind-key -t vi-copy 'r' rectangle-toggle
 
+########################
+# My status line theme #
+########################
+# colors
+set -g status-bg black
+set -g status-fg white
+# alignment
+set-option -g status-justify centre
+# spot at left
+set-option -g status-left '#[bg=black,fg=green][#[fg=cyan]#S#[fg=green]]'
+set-option -g status-left-length 20
+# window list
+set-window-option -g window-status-format '#[dim]#I:#[default]#W#[fg=grey,dim]'
+set-window-option -g window-status-current-format '#[fg=cyan,bold]#I#[fg=blue]:#[fg=cyan]#W#[fg=dim]'
+# spot at right
+set -g status-right '#[fg=green][#[fg=cyan]%Y-%m-%d#[fg=green]]'
+#############
+# End theme #
+#############
+
 # Shortcut to reload tmux conf
 # <ctrl-b>, r
 bind r display-message " reloading... "\; source-file ~/.tmux.conf \; display-message " ✱ tmux.conf is reloaded"
 
 # Let me know that the prefix key is active
-set -g status-left '#{?client_prefix,#[bg=colour245 fg=colour233 bold],#[fg=colour155]} (#S)'
+set -g status-left '#{?client_prefix,#[bg=white fg=black bold],#[fg=colour155]} (#S)'
 
 # Allow pbcopy to work inside tmux
 set -g default-shell $SHELL 
