@@ -39,6 +39,9 @@ done
 
 unset config_files
 
+# Don't share history between shells
+unsetopt share_history
+
 # added by travis gem
 [ -f /Users/matt/.travis/travis.sh ] && source /Users/matt/.travis/travis.sh
 

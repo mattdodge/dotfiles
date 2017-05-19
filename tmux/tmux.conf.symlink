@@ -5,6 +5,13 @@ set -sg escape-time 0
 set-window-option -g automatic-rename on
 set-option -g set-titles on
 
+# Use vim keybindings in copy mode
+setw -g mode-keys vi
+bind P paste-buffer
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+bind-key -t vi-copy 'r' rectangle-toggle
+
 # Shortcut to reload tmux conf
 # <ctrl-b>, r
 bind r display-message " reloading... "\; source-file ~/.tmux.conf \; display-message " ✱ tmux.conf is reloaded"
