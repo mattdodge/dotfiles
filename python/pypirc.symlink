@@ -5,10 +5,10 @@ index-servers =
 
 [pypi]
 repository=https://pypi.python.org/pypi
-username=<<USERNAME>>
-password=<<PASSWORD>>
+username=$PYTHON_PYPI_USERNAME
+password=$PYTHON_PYPI_PASSWORD
 
 [pypitest]
 repository=https://testpypi.python.org/pypi
-username=<<USERNAME>>
-password=<<PASSWORD>>
+username=$PYTHON_PYPI_USERNAME
+password=$PYTHON_PYPI_PASSWORD
