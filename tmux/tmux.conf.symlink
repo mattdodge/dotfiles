@@ -5,6 +5,13 @@ set -sg escape-time 0
 set-window-option -g automatic-rename on
 set-option -g set-titles on
 
+# Shortcut to reload tmux conf
+# <ctrl-b>, r
+bind r display-message " reloading... "\; source-file ~/.tmux.conf \; display-message " ✱ tmux.conf is reloaded"
+
+# Let me know that the prefix key is active
+set -g status-left '#{?client_prefix,#[bg=colour245 fg=colour233 bold],#[fg=colour155]} (#S)'
+
 # Allow pbcopy to work inside tmux
 set -g default-shell $SHELL 
 set -g default-command "reattach-to-user-namespace -l ${SHELL}"
@@ -12,11 +19,25 @@ set -g default-command "reattach-to-user-namespace -l ${SHELL}"
 # Focus events so vim can read events like autoread
 set -g focus-events on
 
+# splits open in same working directory
+bind '"' split-window -c "#{pane_current_path}"
+bind '%' split-window -h -c "#{pane_current_path}"
+
+# Enable mouse support in ~/.tmux.conf
+set -g mouse on
+#set-option -g mouse-select-pane on
+#set-option -g mouse-select-window on
+#set-window-option -g mode-mouse on
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Navigate vim and tmux panes the same!
+set -g @plugin 'christoomey/vim-tmux-navigator'
+run '~/.tmux/plugins/tpm/tpm'
 
 # Automatically restore old tmux sessions
 set -g @continuum-restore 'on'
