@@ -50,11 +50,8 @@ set -g focus-events on
 bind '"' split-window -c "#{pane_current_path}"
 bind '%' split-window -h -c "#{pane_current_path}"
 
-# Enable mouse support in ~/.tmux.conf
+# Enable mouse support for scroll and copy/paste
 set -g mouse on
-#set-option -g mouse-select-pane on
-#set-option -g mouse-select-window on
-#set-window-option -g mode-mouse on
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
