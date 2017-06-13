@@ -130,6 +130,8 @@ let g:syntastic_html_checkers = []
 " vim-easymotion
 nmap <Space> <Plug>(easymotion-s)
 
+" vim-tmux-navigator was leaving around some extra chars
+au FocusLost * silent redraw!
 
 
 
