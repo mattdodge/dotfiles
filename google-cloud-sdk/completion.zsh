@@ -1,29 +1,31 @@
-autoload -Uz compinit bashcompinit
-compinit
-bashcompinit
+autoload -U +X bashcompinit && bashcompinit
+zmodload -i zsh/parameter
+if ! (( $+functions[compdef] )) ; then
+    autoload -U +X compinit && compinit
+fi
 
 _python_argcomplete() {
     local prefix=
-    if [[ $COMP_LINE != 'gcloud '* ]]; then
-        args="${PWD}/${COMP_WORDS[0]}"
-        args=(${(@s|/|)args} ${COMP_WORDS[1,-1]})
-        COMP_LINE="${args[@]}"
-        COMP_POINT=${#COMP_LINE}
-    fi
-    if [[ $3 == ssh  && $2 == *@* ]] ;then
-        # handle ssh user@instance specially
-        prefix=${2%@*}@
-        COMP_LINE=${COMP_LINE%$2}"${2#*@}"
-    elif [[ $2 == *'='* ]] ; then
-        # handle --flag=value
-        prefix=${2%=*}'='
-        COMP_LINE=${COMP_LINE%$2}${2/'='/' '}
+    if [[ $COMP_LINE == 'gcloud '* ]]; then
+        if [[ $3 == ssh  && $2 == *@* ]] ;then
+            # handle ssh user@instance specially
+            prefix=${2%@*}@
+            COMP_LINE=${COMP_LINE%$2}"${2#*@}"
+        elif [[ $2 == *'='* ]] ; then
+            # handle --flag=value
+            prefix=${2%=*}'='
+            COMP_LINE=${COMP_LINE%$2}${2/'='/' '}
+        fi
     fi
     local IFS=''
     COMPREPLY=( $(IFS="$IFS"                   COMP_LINE="$COMP_LINE"                   COMP_POINT="$COMP_POINT"                   _ARGCOMPLETE_COMP_WORDBREAKS="$COMP_WORDBREAKS"                   _ARGCOMPLETE=1                   "$1" 8>&1 9>&2 1>/dev/null 2>/dev/null) )
     if [[ $? != 0 ]]; then
         unset COMPREPLY
         return
+    fi
+    # if one completion without a trailing space, add the space
+    if [[ ${#COMPREPLY[@]} == 1 && $COMPREPLY != *[=' '] ]]; then
+        COMPREPLY+=' '
     fi
     if [[ $prefix != '' ]]; then
         typeset -i n
