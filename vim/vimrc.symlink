@@ -14,7 +14,7 @@ set foldmethod=indent
 set foldlevel=99
 
 set completeopt=menuone,longest,preview
-set tabstop=4 shiftwidth=4 softtabstop=4
+set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 
 " Our leader will be the comma key
 let mapleader = ","
@@ -24,6 +24,9 @@ inoremap jk <Esc>
 
 " double semi-colon starts bash command
 nnoremap ;; :!
+
+" backspace across line breaks
+set backspace=indent,eol,start
 
 " search stuff
 set ignorecase
@@ -174,5 +177,6 @@ autocmd BufEnter *.css setlocal ts=2 sts=2 sw=2 expandtab
 " HTML files
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 noexpandtab
 
-" YAML Files
+" YAML/Terraform Files
 au FileType yaml set sw=2
+au BufEnter *.tf set sw=2 ts=2 sts=2 noexpandtab
