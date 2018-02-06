@@ -1,6 +1,17 @@
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
+""""""""""""""""""""""
+" INITIALIZE PLUGINS "
+""""""""""""""""""""""
+call plug#begin()
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-jedi'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'kien/ctrlp.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mileszs/ack.vim'
+call plug#end()
 
 """"""""""""""""""""
 " GENERAL SETTINGS "
@@ -50,7 +61,6 @@ filetype plugin indent on
 syntax on
 
 
-
 """""""""""""""""""""""""
 " MOVEMENT / NAVIGATION "
 """""""""""""""""""""""""
@@ -91,12 +101,16 @@ noremap H ^
 nnoremap ; :
 
 
-
-
-
 """""""""""""""""""""""""
 " PLUGIN SPECIFIC STUFF "
 """""""""""""""""""""""""
+" python-neovim
+let g:python3_host_prog = '/Users/matt/venv/neovim/bin/python'
+let g:loaded_python_provider = 1   " Python3 support only
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
 " ack
 nmap <leader>a <Esc>:Ack!
 
@@ -109,34 +123,14 @@ let g:ctrlp_working_path_mode = 'a'
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore=['__pycache__', '\~$']
 
-" vim-fugitive
-autocmd BufReadPost fugitive://* set bufhidden=delete " don't show in buffer
+" vim-tmux-navigator was leaving around some extra chars
+au FocusLost * silent redraw!
 
 " rainbow_parentheses
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
-let g:syntastic_html_checkers = []
-
-" vim-easymotion
-nmap <Space> <Plug>(easymotion-s)
-
-" vim-tmux-navigator was leaving around some extra chars
-au FocusLost * silent redraw!
-
-
 
 """""""""""""""""""""""""
 " SETTINGS BY FILE TYPE "
@@ -146,26 +140,6 @@ au FocusLost * silent redraw!
 autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql 
 autocmd BufEnter *.py let &colorcolumn=join(range(80,999),",")
 autocmd BufEnter *.py highlight ColorColumn ctermbg=236 guibg=#3A3A3A
-let g:pymode_lint_write = 0
-let g:pymode_doc = 0
-let g:pymode_python = 'python3'
-let g:pymode_lint_ignore = ["W601"] " Ignore pesky has_key warnings
-au FileType python set omnifunc=pythoncomplete#Complete
-au FileType python set completeopt-=preview
-let g:SuperTabDefaultCompletionType = "context"
-" Python-mode stuff
-let g:pymode_rope = 1
-let g:pymode_rope_goto_definition_cmd = 'e'
-let g:pymode_rope_goto_definition_bind = '<leader>j'
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_autoimport = 1
-map <leader>i :PymodeRopeAutoImport<CR>
-let g:pymode_run_bind = '<leader>e'     " 'execute' instead of 'run'
-let g:pymode_rope_rename_bind = '<leader>r'
-let g:pymode_lint_checkers = ['pyflakes', 'pep8']
-let g:pymode_paths = ['/Users/matt/code/nio/src', '/Users/matt/code/nioext/src', '/Library/Frameworks/Python.framework/Versions/Current/lib/python3.4/site-packages']
-" Automatically fix lint errors
-map <leader>f :PymodeLintAuto<CR>:PymodeLint<CR>
 
 " JavaScript specific stuff
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
@@ -180,3 +154,5 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2 noexpandtab
 " YAML/Terraform Files
 au FileType yaml set sw=2
 au BufEnter *.tf set sw=2 ts=2 sts=2 noexpandtab
+
+

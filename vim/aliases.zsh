@@ -1,4 +1,5 @@
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+# Use neovim
+alias vim="/usr/local/bin/nvim"
 
 pathogen_install() {
 	pushd ~/.dotfiles/vim/vim.symlink/bundle
