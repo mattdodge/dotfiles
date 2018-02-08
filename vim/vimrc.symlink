@@ -13,6 +13,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
 Plug 'fholgado/minibufexpl.vim'
+Plug 'tpope/vim-obsession'
 call plug#end()
 
 """"""""""""""""""""

@@ -1,10 +1,6 @@
 # No delay for escape key press
 set -sg escape-time 0
 
-# Automatically set window title
-set-window-option -g automatic-rename on
-set-option -g set-titles on
-
 # Use vim keybindings in copy mode
 setw -g mode-keys vi
 bind P paste-buffer
@@ -61,10 +57,11 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 
 # Navigate vim and tmux panes the same!
 set -g @plugin 'christoomey/vim-tmux-navigator'
-run '~/.tmux/plugins/tpm/tpm'
 
 # Automatically restore old tmux sessions
 set -g @continuum-restore 'on'
+# include neovim sessions
+set -g @resurrect-strategy-nvim 'session'
 
 # # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
