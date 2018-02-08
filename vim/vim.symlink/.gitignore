@@ -1,2 +1,5 @@
 # Ignore the plugins managed by vim-plug
 plugged
+
+# Don't need to commit history of files changed
+.netrwhist
