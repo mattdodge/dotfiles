@@ -1,1 +1,7 @@
 resurrect
+
+# Ignore all tmux plugins except for TPM
+# We will use TPM to manage our plugins
+# Add plugins to tmux.conf and then press <prefix>-I to install
+plugins/*
+!plugins/tpm
