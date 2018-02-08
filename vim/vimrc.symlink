@@ -1,6 +1,7 @@
 """"""""""""""""""""""
 " INITIALIZE PLUGINS "
 """"""""""""""""""""""
+" Add plugins here, source this file, then run :PlugInstall
 call plug#begin()
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -11,6 +12,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
+Plug 'fholgado/minibufexpl.vim'
 call plug#end()
 
 """"""""""""""""""""
