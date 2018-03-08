@@ -10,5 +10,7 @@ alias docker-compose-cycle='docker-compose stop && docker-compose rm -f && docke
 # Enter a shell in a container
 docker-shell() { docker exec -i -t $1 /bin/bash; }
 
-# Log in to AWS ECR
-alias docker-login='eval `aws ecr get-login --region=us-west-2 --no-include-email`'
+# Print a login command for GCR login
+docker-login() {
+	echo "docker login -u oauth2accesstoken -p \"$(gcloud auth application-default print-access-token)\" https://gcr.io"
+}
