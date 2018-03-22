@@ -111,7 +111,7 @@ nnoremap ; :
 " PLUGIN SPECIFIC STUFF "
 """""""""""""""""""""""""
 " python-neovim
-let g:python3_host_prog = '/Users/matt/venv/neovim/bin/python'
+let g:python3_host_prog = '/Users/matt/.pyenv/versions/neovim/bin/python'
 let g:loaded_python_provider = 1   " Python3 support only
 
 " deoplete
@@ -141,7 +141,7 @@ au Syntax * RainbowParenthesesLoadBraces
 " neomake
 call neomake#configure#automake('w')
 let g:neomake_python_flake8_maker = {
-  \ 'exe': '/Users/matt/venv/neovim/bin/flake8',
+  \ 'exe': '/Users/matt/.pyenv/versions/neovim/bin/flake8',
   \ 'args': ['--format=default'],
   \ 'errorformat':
       \ '%E%f:%l: could not compile,%-Z%p^,' .
