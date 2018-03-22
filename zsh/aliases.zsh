@@ -12,7 +12,7 @@ alias ll="ls -Gl" # long list, excludes dot files
 
 alias pgrep="ps -ax | grep -i"
 grepr() {
-	grep -r -I $1 ./* --color=auto "${@:2}"
+	grep -r -I $1 ./* --color=auto "${@:2}" 2>/dev/null
 }
 
 alias stfu="osascript -e 'set volume output muted true'"
