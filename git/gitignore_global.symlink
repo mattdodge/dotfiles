@@ -4,3 +4,4 @@
 .cache
 .githide
 .ropeproject
+.python-version
