@@ -17,13 +17,15 @@ Plug 'tpope/vim-obsession'
 Plug 'neomake/neomake'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'hashivim/vim-terraform'
+Plug 'nightsense/carbonized'
 call plug#end()
 
 """"""""""""""""""""
 " GENERAL SETTINGS "
 """"""""""""""""""""
 set t_Co=256
-colorscheme desert256
+set termguicolors
+colorscheme carbonized-dark
 set guifont=Hack
 
 set nocompatible
@@ -62,6 +64,13 @@ set nobackup
 set nowritebackup
 set hidden
 set autoread " Automatically reload files from disk if they are changed
+
+" More colors
+autocmd ColorScheme *
+            \ hi NeomakeErrorSign ctermfg=red |
+            \ hi NeomakeWarningSign ctermfg=yellow |
+            \ hi NeomakeInfoSign ctermfg=white |
+            \ hi NeomakeMessageSign ctermfg=white
 
 filetype plugin indent on
 syntax on
