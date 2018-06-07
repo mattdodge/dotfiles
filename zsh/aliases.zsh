@@ -37,3 +37,8 @@ function sleepin() {
 	sudo pmset schedule sleep "$datetime"
 	echo "Going to sleep at $datetime"
 }
+
+function see_cert() {
+	openssl s_client -showcerts -servername $1 -connect $1:443 </dev/null
+}
+
