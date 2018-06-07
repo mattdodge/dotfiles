@@ -5,3 +5,4 @@
 .githide
 .ropeproject
 .python-version
+.pytest_cache
