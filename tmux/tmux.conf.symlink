@@ -46,6 +46,11 @@ set -g focus-events on
 bind '"' split-window -c "#{pane_current_path}"
 bind '%' split-window -h -c "#{pane_current_path}"
 
+# Break panes and re join them
+bind-key ! break-pane -d  # Break panes into the background, don't switch to them
+bind-key S choose-window 'join-pane -v -s "%%"'   # join a pane below the current one
+bind-key V choose-window 'join-pane -h -s "%%"'   # join a pane to the left of the current one
+
 # Enable mouse support for scroll and copy/paste
 set -g mouse on
 
