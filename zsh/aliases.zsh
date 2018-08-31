@@ -30,6 +30,11 @@ alias gzip="gzip -9n" # set strongest compression level as ‘default’ for gzi
 alias ping="ping -c 5" # ping 5 times ‘by default’
 alias ql="qlmanage -p 2>/dev/null" # preview a file using QuickLook
 
+# Use bat instead of cat
+# https://github.com/sharkdp/bat
+alias cat="bat --theme=zenburn"
+alias oldcat=/bin/cat
+
 # Schedule sleep in X minutes, use like: sleepin 60
 function sleepin() {
 	local minutes="$1"
