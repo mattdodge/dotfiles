@@ -38,8 +38,8 @@ set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 " Our leader will be the comma key
 let mapleader = ","
 
-" Escape with jk 
-inoremap jk <Esc>
+" Use escape to exit terminal mode
+:tnoremap <Esc> <C-\><C-n>
 
 " double semi-colon starts bash command
 nnoremap ;; :!
@@ -159,6 +159,7 @@ let g:neomake_python_flake8_maker = {
       \ '%-G%.%#',
   \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
   \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 """""""""""""""""""""""""
 " SETTINGS BY FILE TYPE "
