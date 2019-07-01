@@ -1,1 +1,2 @@
-export PATH=$PATH:/Users/matt/android/android-sdk/sdk/tools/:/Users/matt/android/android-sdk/sdk/platform-tools/
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
