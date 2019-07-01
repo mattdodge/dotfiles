@@ -13,9 +13,9 @@ fi
 
 # all of our zsh files
 typeset -U config_files
-config_files=($ZSHDOT/**/*.zsh)
+config_files=($ZSHDOT/*/*.zsh)
 # Ignore anything in a tests folder
-config_files=(${config_files:#*/test?/*})
+#config_files=(${config_files:#*/test?/*})
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
@@ -49,3 +49,5 @@ unsetopt share_history
 
 export NVM_DIR="/Users/matt/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
