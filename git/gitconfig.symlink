@@ -6,6 +6,7 @@
 [user]
         name = Matt Dodge
         email = mattedgod@gmail.com
+				signingkey = B29A1B6391C67ADC
 [credential]
         helper = osxkeychain
 [alias]
