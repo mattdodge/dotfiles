@@ -135,6 +135,10 @@ install_dotfiles () {
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
+
+  # Link the neovim init file
+  mkdir -p $HOME/.config/nvim
+  link_file $DOTFILES_ROOT/vim/init.vim $HOME/.config/nvim/init.vim
 }
 
 setup_gitconfig
