@@ -23,7 +23,8 @@ set-option -g status-left-length 20
 set-window-option -g window-status-format '#[dim]#I:#[default]#W#[fg=grey,dim]'
 set-window-option -g window-status-current-format '#[fg=cyan,bold]#I#[fg=blue]:#[fg=cyan]#W#[fg=dim]'
 # spot at right
-set -g status-right '#[fg=green][#[fg=cyan]%Y-%m-%d#[fg=green]]'
+set -g status-right '#(/bin/bash $HOME/.tmux/plugins/kube-tmux/kube.tmux 250 red cyan) #[fg=green][#[fg=cyan]%Y-%m-%d#[fg=green]]'
+set-option -g status-right-length 200
 #############
 # End theme #
 #############
@@ -60,6 +61,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'jonmosco/kube-tmux'
 
 # Navigate vim and tmux panes the same!
 set -g @plugin 'christoomey/vim-tmux-navigator'
