@@ -4,7 +4,7 @@
 [hub]
         protocol = ssh
 [user]
-        name = mattdodge
+        name = Matt Dodge
         email = mattedgod@gmail.com
 [credential]
         helper = osxkeychain
@@ -24,12 +24,6 @@
         editor = vim
 [apply]
         whitespace = nowarn
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [help]
         autocorrect = 1
 [push]
@@ -41,11 +35,6 @@
 [rerere]
 	enabled = true
 	autoupdate = true
-[merge]
-	tool = p4merge
-[mergetool "p4merge"]
-	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$LOCAL $PWD/$REMOTE $PWD/$MERGED
-	trustExitCode = false
 [mergetool]
 	keepBackup = false
 [filter "lfs"]
