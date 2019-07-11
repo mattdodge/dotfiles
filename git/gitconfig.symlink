@@ -1,0 +1,57 @@
+# Sample gitconfig
+#
+
+[hub]
+        protocol = ssh
+[user]
+        name = mattdodge
+        email = mattedgod@gmail.com
+[credential]
+        helper = osxkeychain
+[alias]
+        co = checkout
+        promote = !$ZSHDOT/bin/git-promote
+        wtf     = !$ZSHDOT/bin/git-wtf
+        rank-contributors = !$ZSHDOT/bin/git-rank-contributors
+        count   = !git shortlog -sn
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore_global
+        editor = vim
+[apply]
+        whitespace = nowarn
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[help]
+        autocorrect = 1
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to surpress warning message
+        default = simple
+[rerere]
+	enabled = true
+	autoupdate = true
+[merge]
+	tool = p4merge
+[mergetool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$LOCAL $PWD/$REMOTE $PWD/$MERGED
+	trustExitCode = false
+[mergetool]
+	keepBackup = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[http]
+	cookiefile = /Users/matt/.gitcookies
