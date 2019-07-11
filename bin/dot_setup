@@ -4,7 +4,7 @@
 #
 # `dot` handles installation, updates, things like that. Run it periodically
 # to make sure you're on the latest and greatest.
-export ZSHDOT=$HOME/.dotfiles
+export ZSHDOT=$HOME/dotfiles
 
 # Set OS X defaults
 $ZSHDOT/osx/set-defaults.sh
