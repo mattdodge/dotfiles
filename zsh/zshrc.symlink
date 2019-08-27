@@ -51,3 +51,15 @@ export NVM_DIR="/Users/matt/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Use vim mode when pressing <Esc> frm CLI input
+# Displays a [VIM] indicator on the right when in vim mode
+bindkey -v
+function zle-line-init zle-keymap-select {
+	VIM_PROMPT="%{$fg_bold[yellow]%} [%VIM]% %{$reset_color%}"
+	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+	zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
