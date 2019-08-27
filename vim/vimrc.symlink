@@ -32,8 +32,6 @@ colorscheme carbonized-dark
 set guifont=Hack
 
 set nocompatible
-set foldmethod=indent
-set foldlevel=99
 
 set completeopt=menuone,longest,preview
 set tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
@@ -49,6 +47,12 @@ let mapleader = ","
 
 " backspace across line breaks
 set backspace=indent,eol,start
+
+" folding stuff
+set foldenable
+set foldmethod=indent
+set foldlevel=99  " dont fold by default
+nnoremap <space> za
 
 " search stuff
 set ignorecase
