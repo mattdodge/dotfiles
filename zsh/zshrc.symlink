@@ -52,6 +52,9 @@ export NVM_DIR="/Users/matt/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+
 # Use vim mode when pressing <Esc> frm CLI input
 # Displays a [VIM] indicator on the right when in vim mode
 bindkey -v
