@@ -22,7 +22,7 @@
         ui = true
 [core]
         excludesfile = ~/.gitignore_global
-        editor = vim
+        editor = nvim
 [apply]
         whitespace = nowarn
 [help]
