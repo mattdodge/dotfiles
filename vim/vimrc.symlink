@@ -171,6 +171,10 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 " typescript
 let g:yats_host_keyword = 1
 
+" terraform
+let g:terraform_align = 1
+let g:terraform_fmt_on_save = 1
+
 """""""""""""""""""""""""
 " SETTINGS BY FILE TYPE "
 """""""""""""""""""""""""
