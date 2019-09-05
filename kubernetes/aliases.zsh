@@ -9,3 +9,12 @@ kubectl-restart() {
 			 | select(.name == "RESTART_")) 
 		| .spec.template.spec.containers[0].env += [{name: "RESTART_", value: now|tostring}]' | kubectl apply -f -
 }
+
+kubectl-delete-evicted() {
+  kubectl get po --all-namespaces -o json | \
+		jq  '.items[] | 
+			select(.status.reason!=null) | 
+			select(.status.reason | 
+			contains("Evicted")) | 
+			"kubectl delete po \(.metadata.name) -n \(.metadata.namespace)"' | xargs -n 1 bash -c
+}
