@@ -21,6 +21,7 @@ Plug 'nightsense/carbonized'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'posva/vim-vue'
+Plug 'pearofducks/ansible-vim'
 call plug#end()
 
 """"""""""""""""""""
@@ -167,6 +168,17 @@ let g:neomake_python_flake8_maker = {
   \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
   \ }
 let g:neomake_javascript_enabled_makers = ['eslint']
+" Run yamllint in relaxed mode and only show errors (not warnings)
+let g:neomake_yaml_yamllint_maker = {
+  \ 'exe': '/Users/matt/.pyenv/versions/neovim/bin/yamllint',
+  \ 'args': ['-d', 'relaxed', '-f', 'parsable'],
+  \ 'errorformat': '%E%f:%l:%c: [error] %m',
+  \ }
+let g:neomake_ansible_ansiblelint_maker = {
+  \ 'exe': '/Users/matt/.pyenv/versions/neovim/bin/ansible-lint',
+  \ 'args': ['-p', '--nocolor'],
+  \ 'errorformat': '%f:%l: [%tANSIBLE%n] %m',
+  \ }
 
 " typescript
 let g:yats_host_keyword = 1
@@ -181,12 +193,12 @@ let g:terraform_fmt_on_save = 1
 
 " Python specific stuff 
 autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql 
-autocmd BufEnter *.py let &colorcolumn=join(range(80,999),",")
+autocmd BufEnter *.py let &colorcolumn=join(range(91,999),",")
 autocmd BufEnter *.py highlight ColorColumn ctermbg=236 guibg=#3A3A3A
 let g:neomake_python_enabled_makers = ['flake8']
 
 " JavaScript specific stuff
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal et ts=2 sts=2 sw=2
 au BufEnter *.ts set sw=2 ts=2 sts=2
 au BufEnter *.json set sw=2 ts=2 sts=2
 
@@ -198,7 +210,7 @@ autocmd BufEnter *.css setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype *.html setlocal ts=2 sts=2 sw=2 noexpandtab
 
 " YAML/Terraform Files
-au FileType yaml set sw=2
+au FileType yaml set sw=2 expandtab
 au BufEnter *.tf set sw=2 ts=2 sts=2 noexpandtab
 
 
