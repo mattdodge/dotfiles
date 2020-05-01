@@ -139,7 +139,7 @@ nmap <leader>a <Esc>:Ack!
 
 " ctrlp
 let g:ctrlp_map = '<leader>t'     " I used to use command-t...
-let g:ctrlp_custom_ignore = '\v\.(pyc|git)' " Ignore the crap
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|pyc|git))$'
 let g:ctrlp_working_path_mode = 'a'
 
 " nerdtree
