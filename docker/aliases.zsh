@@ -1,5 +1,9 @@
-# Clean non running containers
-alias docker-clean='docker rm $(docker ps -a -q)'
+# Clean up Docker environment
+docker-clean() {
+	docker rm $(docker ps -a -q) || true
+	docker volume rm $(docker volume ls -qf dangling=true) || true
+	docker image prune -f || true
+}
 
 # Clean untagged docker images
 alias docker-image-clean='docker rmi $(docker images -q -f dangling=true)'
