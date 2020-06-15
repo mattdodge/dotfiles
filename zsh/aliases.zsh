@@ -2,6 +2,9 @@ alias reload!='. ~/.zshrc'
 alias ..="cd .."
 alias ...="cd .. ; cd .."
 
+# We alias ctx to source our bash script so we can set env vars
+alias ctx='source set-ctx "$@"'
+
 cdl() {
 	cd $1
 	ls -l

@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# ctx - A quick context switcher
+#
+# Configuration:
+# Put names of contexts (e.g. stage, prod) in `~/.config/ctx/NAME.ctx` as shell scripts for what to do when the context is activated
+#
+# For example:
+# **~/.config/ctx/prod.ctx**
+# ```
+# kubectl config use-context prod
+# gcloud config configurations activate prod
+# export API_URL=https://prod.mysite.com
+# ```
+#
+# Usage:
+# To switch to a context:
+# ```bash
+# $ ctx prod
+# Switched to context prod
+# ```
+usage()
+{ cat << EOF
+usage: ctx [context-name]
+
+EXAMPLE:
+ctx stage
+EOF
+}
+
+CTX=$1
+if [[ -z "$CTX" ]]; then
+	usage
+	exit 1
+fi
+
+CTX_FILE="$HOME/.config/ctx/$CTX.ctx"
+
+if [[ ! -f "$CTX_FILE" ]]; then
+	echo "[ERROR] No context file for $CTX found"
+	exit 1
+fi
+
+. "$CTX_FILE"
+echo "Activated context $CTX"
