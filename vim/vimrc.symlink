@@ -159,7 +159,7 @@ au Syntax * RainbowParenthesesLoadBraces
 call neomake#configure#automake('w')
 let g:neomake_python_flake8_maker = {
   \ 'exe': '/Users/matt/.pyenv/versions/neovim/bin/flake8',
-  \ 'args': ['--format=default'],
+  \ 'args': ['--format=default', '--ignore=E501'],
   \ 'errorformat':
       \ '%E%f:%l: could not compile,%-Z%p^,' .
       \ '%A%f:%l:%c: %t%n %m,' .
@@ -198,9 +198,10 @@ autocmd BufEnter *.py highlight ColorColumn ctermbg=236 guibg=#3A3A3A
 let g:neomake_python_enabled_makers = ['flake8']
 
 " JavaScript specific stuff
-autocmd Filetype javascript setlocal et ts=2 sts=2 sw=2
-au BufEnter *.ts set sw=2 ts=2 sts=2
-au BufEnter *.json set sw=2 ts=2 sts=2
+autocmd Filetype javascript setlocal noet ts=2 sts=2 sw=2
+au BufEnter *.ts set noet sw=2 ts=2 sts=2
+au BufEnter *.json set noet sw=2 ts=2 sts=2
+au BufEnter *.vue set noet sw=2 ts=2 sts=2
 
 " CSS specific stuff
 autocmd BufEnter *.scss setlocal ts=2 sts=2 sw=2 expandtab

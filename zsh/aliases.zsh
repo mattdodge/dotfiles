@@ -11,8 +11,13 @@ alias la="ls -Gla" # list all, includes dot files
 alias ll="ls -Gl" # long list, excludes dot files
 
 alias pgrep="ps -ax | grep -i"
+# grepr ignores some common big files that I don't actually ever want to match
 grepr() {
-	grep -r --exclude-dir=node_modules -I $1 ./* --color=auto "${@:2}" 2>/dev/null
+	grep -r --exclude '*.json' --exclude '*.backup' --exclude 'encompass_test_data.py' --exclude-dir=node_modules -I $1 ./* --color=auto "${@:2}" 2>/dev/null
+}
+# greprall is grepr without ignoring/excluding anything
+greprall() {
+	grep -r -I $1 ./* --color=auto "${@:2}" 2>/dev/null
 }
 
 alias stfu="osascript -e 'set volume output muted true'"
@@ -25,6 +30,7 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias myipc="myip | pbcopy"
 alias flush="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache" # Flush DNS cache
+alias fixclipboard="killall pboard"  # I have to run this far too often
 
 alias gzip="gzip -9n" # set strongest compression level as ‘default’ for gzip
 alias ping="ping -c 5" # ping 5 times ‘by default’
