@@ -1,5 +1,5 @@
 # Use neovim
-alias vim="/usr/local/bin/nvim"
+alias vim=$(which nvim)
 
 pathogen_install() {
 	pushd ~/dotfiles/vim/vim.symlink/bundle
