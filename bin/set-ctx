@@ -38,8 +38,7 @@ CTX_FILE="$HOME/.config/ctx/$CTX.ctx"
 
 if [[ ! -f "$CTX_FILE" ]]; then
 	echo "[ERROR] No context file for $CTX found"
-	exit 1
+else
+	. "$CTX_FILE"
+	echo "Activated context $CTX"
 fi
-
-. "$CTX_FILE"
-echo "Activated context $CTX"

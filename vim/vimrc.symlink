@@ -35,7 +35,8 @@ set guifont=Hack
 set nocompatible
 
 set completeopt=menuone,longest,preview
-set tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
+set tabstop=2 shiftwidth=0 softtabstop=2 noexpandtab
+set shiftwidth=0  " this makes shift width always the same as tab width, nifty!
 
 " Our leader will be the comma key
 let mapleader = ","
@@ -159,7 +160,7 @@ au Syntax * RainbowParenthesesLoadBraces
 call neomake#configure#automake('w')
 let g:neomake_python_flake8_maker = {
   \ 'exe': '/Users/matt/.pyenv/versions/neovim/bin/flake8',
-  \ 'args': ['--format=default', '--ignore=E501'],
+  \ 'args': ['--format=default', '--ignore=E501,W503,W504'],
   \ 'errorformat':
       \ '%E%f:%l: could not compile,%-Z%p^,' .
       \ '%A%f:%l:%c: %t%n %m,' .
@@ -186,6 +187,8 @@ let g:yats_host_keyword = 1
 " terraform
 let g:terraform_align = 1
 let g:terraform_fmt_on_save = 1
+" Treat all HCL files as a terraform file type
+autocmd BufRead,BufNewFile *.hcl set filetype=terraform
 
 """""""""""""""""""""""""
 " SETTINGS BY FILE TYPE "

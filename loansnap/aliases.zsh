@@ -3,3 +3,8 @@ tfclean() {
 	make clean
 	cd -
 }
+
+f() {
+	fly -t loansnap status || fly -t loansnap login -b
+	fly -t loansnap "$@"
+}
