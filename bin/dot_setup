@@ -14,3 +14,6 @@ brew update
 
 # Install homebrew packages
 $ZSHDOT/homebrew/install.sh 2>&1
+
+# Install oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
