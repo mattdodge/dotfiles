@@ -45,3 +45,5 @@
 	required = true
 [http]
 	cookiefile = /Users/matt/.gitcookies
+[pull]
+	rebase = false
