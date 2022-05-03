@@ -160,7 +160,7 @@ au Syntax * RainbowParenthesesLoadBraces
 call neomake#configure#automake('w')
 let g:neomake_python_flake8_maker = {
   \ 'exe': '/Users/matt/.pyenv/versions/neovim/bin/flake8',
-  \ 'args': ['--format=default', '--ignore=E501,W503,W504'],
+  \ 'args': ['--format=default', '--ignore=E501,E302,E305,W503,W504'],
   \ 'errorformat':
       \ '%E%f:%l: could not compile,%-Z%p^,' .
       \ '%A%f:%l:%c: %t%n %m,' .
