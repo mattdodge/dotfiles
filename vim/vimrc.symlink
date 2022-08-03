@@ -3,6 +3,7 @@
 """"""""""""""""""""""
 " Add plugins here, source this file, then run :PlugInstall
 call plug#begin()
+Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -35,8 +36,8 @@ set guifont=Hack
 set nocompatible
 
 set completeopt=menuone,longest,preview
-set tabstop=2 shiftwidth=0 softtabstop=2 noexpandtab
-set shiftwidth=0  " this makes shift width always the same as tab width, nifty!
+"set tabstop=2 shiftwidth=0 softtabstop=2 noexpandtab
+"set shiftwidth=0  " this makes shift width always the same as tab width, nifty!
 
 " Our leader will be the comma key
 let mapleader = ","
@@ -201,8 +202,8 @@ autocmd BufEnter *.py highlight ColorColumn ctermbg=236 guibg=#3A3A3A
 let g:neomake_python_enabled_makers = ['flake8']
 
 " JavaScript specific stuff
-autocmd Filetype javascript setlocal noet ts=2 sts=2 sw=2
-au BufEnter *.ts set noet sw=2 ts=2 sts=2
+"autocmd Filetype javascript setlocal noet ts=2 sts=2 sw=2
+"au BufEnter *.ts set noet sw=2 ts=2 sts=2
 au BufEnter *.json set noet sw=2 ts=2 sts=2
 au BufEnter *.vue set noet sw=2 ts=2 sts=2
 

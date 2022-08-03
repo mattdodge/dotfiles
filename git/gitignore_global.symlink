@@ -6,3 +6,5 @@
 .ropeproject
 .python-version
 .pytest_cache
+.terraform-version
+.nvmrc
