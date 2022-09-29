@@ -17,11 +17,12 @@ Plug 'tpope/vim-obsession'
 Plug 'neomake/neomake'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'hashivim/vim-terraform'
-Plug 'nightsense/carbonized'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'posva/vim-vue'
 Plug 'pearofducks/ansible-vim'
+Plug 'jacoborus/tender.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 """"""""""""""""""""
@@ -29,7 +30,9 @@ call plug#end()
 """"""""""""""""""""
 set t_Co=256
 set termguicolors
-colorscheme carbonized-dark
+" colorscheme tender  " old dark theme
+colorscheme PaperColor  " light & dark theme
+" set background=light
 set guifont=Hack
 
 set nocompatible
@@ -129,8 +132,15 @@ noremap H ^
 " PLUGIN SPECIFIC STUFF "
 """""""""""""""""""""""""
 " python-neovim
-let g:python3_host_prog = '/Users/matt/.pyenv/versions/neovim/bin/python'
+let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim/bin/python'
 let g:loaded_python_provider = 1   " Python3 support only
+
+" black (python)
+let g:black_virutalenv = $HOME.'/.pyenv/versions/neovim'
+augroup black_on_save
+  autocmd!
+  autocmd BufWritePre *.py Black
+augroup end
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -159,7 +169,7 @@ au Syntax * RainbowParenthesesLoadBraces
 " neomake
 call neomake#configure#automake('w')
 let g:neomake_python_flake8_maker = {
-  \ 'exe': '/Users/matt/.pyenv/versions/neovim/bin/flake8',
+  \ 'exe': $HOME.'/.pyenv/versions/neovim/bin/flake8',
   \ 'args': ['--format=default', '--ignore=E501,E302,E305,W503,W504'],
   \ 'errorformat':
       \ '%E%f:%l: could not compile,%-Z%p^,' .
