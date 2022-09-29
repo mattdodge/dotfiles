@@ -9,7 +9,7 @@
         signingkey = B29A1B6391C67ADC
 
 # Custom gitconfig/user for work related repos
-[includeIf "gitdir:~/code/r"]
+[includeIf "gitdir:~/code/r/"]
 	path = ~/code/r/.gitconfig
 
 [credential]
