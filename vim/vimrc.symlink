@@ -34,6 +34,7 @@ set termguicolors
 colorscheme PaperColor  " light & dark theme
 " set background=light
 set guifont=Hack
+set mouse=
 
 set nocompatible
 
