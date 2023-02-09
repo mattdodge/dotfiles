@@ -2,11 +2,16 @@
 #
 
 [hub]
-        protocol = ssh
+	protocol = ssh
 [user]
         name = Matt Dodge
         email = mattedgod@gmail.com
-				signingkey = B29A1B6391C67ADC
+        signingkey = B29A1B6391C67ADC
+
+# Custom gitconfig/user for work related repos
+[includeIf "gitdir:~/code/r/"]
+	path = ~/code/r/.gitconfig
+
 [credential]
         helper = osxkeychain
 [alias]
