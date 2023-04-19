@@ -167,6 +167,7 @@ let g:deoplete#enable_at_startup = 1
 let g:ctrlp_map = '<leader>t'     " I used to use command-t...
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|pyc|git))$'
 let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_max_files = 0
 
 " nerdtree
 map <leader>n :NERDTreeToggle<CR>
@@ -201,7 +202,7 @@ let g:ale_fixers = {
 \}
 let g:ale_hover_cursor = 0
 let g:ale_fix_on_save = 1
-let g:ale_python_flake8_options = '--ignore=E501,W503'
+let g:ale_python_flake8_options = '--ignore=E203,E501,W503'
 let g:ale_javascript_eslint_options = '--cache'
 let g:ale_typescript_eslint_options = '--cache'
 
