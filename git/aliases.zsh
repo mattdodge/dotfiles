@@ -24,4 +24,12 @@ alias gsu='git submodule update --init --recursive'
 alias gpro='git pull-request -o'
 alias gprop='git pull-request -o -p'
 alias forgot='git commit --amend --no-edit'
-alias git-branch-clean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+
+# Clean up branches no longer on the remote
+# Source https://stackoverflow.com/a/33548037/1222076
+git-branch-clean() { 
+  git fetch -p
+  for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}');
+  do git branch -D $branch;
+  done
+}
