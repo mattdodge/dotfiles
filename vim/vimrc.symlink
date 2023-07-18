@@ -6,7 +6,11 @@ call plug#begin()
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" The next 3 plugins are all dependencies for neo-tree
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'kien/ctrlp.vim'
@@ -34,7 +38,6 @@ set termguicolors
 " colorscheme tender  " old dark theme
 colorscheme PaperColor  " light & dark theme
 " set background=light
-set guifont=Hack
 set mouse=
 
 set nocompatible
@@ -169,9 +172,8 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|pyc|git))$
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_max_files = 0
 
-" nerdtree
-map <leader>n :NERDTreeToggle<CR>
-let NERDTreeIgnore=['__pycache__', '\~$', '\.pyc$']
+" neotree
+map <leader>n :Neotree toggle<CR>
 
 " vim-tmux-navigator was leaving around some extra chars
 au FocusLost * silent redraw!
