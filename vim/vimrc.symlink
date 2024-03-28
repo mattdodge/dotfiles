@@ -169,9 +169,15 @@ let g:deoplete#enable_at_startup = 1
 
 " ctrlp
 let g:ctrlp_map = '<leader>t'     " I used to use command-t...
+map <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|pyc|git))$'
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_max_files = 0
+
+" minibufexpl
+" off by default, use <leader><leader> to toggle
+map <leader><leader> :MBEToggle<cr>
+let g:miniBufExplAutoStart = 0
 
 " neotree
 map <leader>n :Neotree toggle<CR>
