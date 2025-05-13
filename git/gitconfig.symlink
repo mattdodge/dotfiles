@@ -28,6 +28,8 @@
 [core]
         excludesfile = ~/.gitignore_global
         editor = nvim
+	fsmonitor = true
+	untracakedcache = true
 [apply]
         whitespace = nowarn
 [help]
