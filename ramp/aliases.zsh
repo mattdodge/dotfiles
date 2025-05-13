@@ -1,4 +1,5 @@
 alias sshqa="devtool dedicated-ssh-to-container --env qa --app core --session-duration 1800"
+alias sshprod="devtool ssh-to-container --env prd"
 gensg () {
 	cat <<EOF
 rules:
@@ -10,3 +11,5 @@ rules:
       - pattern: a
 EOF
 }
+alias pt="uv run --env-file .nativedev.env pytest"
+alias pti="uv run --env-file .nativedev.env pytest -i"
