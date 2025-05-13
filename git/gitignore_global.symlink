@@ -8,3 +8,4 @@
 .pytest_cache
 .terraform-version
 .nvmrc
+sql_audit.py
