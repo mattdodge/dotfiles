@@ -24,7 +24,14 @@ alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias gsu='git submodule update --init --recursive'
 alias gpro='git pull-request -o'
-alias gprop='git pull-request -o -p'
+gprop() {
+if git rev-parse --show-toplevel | grep 'core' &> /dev/null
+then
+  alias gprop='git pull-request -o -p -l "report-failed-tests"'
+else
+  alias gprop='git pull-request -o -p'
+fi
+}
 alias forgot='git commit --amend --no-edit'
 
 # Clean up branches no longer on the remote
