@@ -47,3 +47,5 @@ unsetopt share_history
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 autoload -U +X bashcompinit && bashcompinit
+
+eval "$(direnv hook zsh)"
