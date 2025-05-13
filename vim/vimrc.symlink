@@ -202,12 +202,12 @@ let g:ale_virtualenv_dir_names = [$HOME.'/.pyenv/versions/neovim']
 let g:ale_linters = {
 \	'javascript': ['eslint'],
 \	'typescript': ['eslint', 'tsserver'],
-\	'python': ['flake8', 'mypy'],
+\	'python': ['ruff', 'mypy'],
 \}
 let g:ale_fixers = {
 \	'javascript': ['prettier'],
 \	'typescript': ['prettier'],
-\	'python': ['black'],
+\	'python': ['ruff', 'ruff_format'],
 \}
 let g:ale_hover_cursor = 0
 let g:ale_fix_on_save = 1
