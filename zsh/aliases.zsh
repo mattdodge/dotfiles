@@ -7,11 +7,11 @@ alias ctx='source set-ctx "$@"'
 
 cdl() {
 	cd $1
-	ls -l
+	ll
 }
-alias ls="ls -G" # list
-alias la="ls -Gla" # list all, includes dot files
-alias ll="ls -Gl" # long list, excludes dot files
+alias ls="ls --color=auto" # list
+alias la="ls -la --color=auto" # list all, includes dot files
+alias ll="ls -l --color=auto" # long list, excludes dot files
 
 alias pgrep="ps -ax | grep -i"
 # grepr ignores some common big files that I don't actually ever want to match

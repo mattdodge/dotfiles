@@ -13,3 +13,4 @@ EOF
 }
 alias pt="uv run --env-file .nativedev.env pytest"
 alias pti="uv run --env-file .nativedev.env pytest -i"
+alias claude-yolo="claude --dangerously-skip-permissions"
